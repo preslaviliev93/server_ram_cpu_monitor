@@ -29,8 +29,8 @@ class SystemMonitor:
     def monitor_system(self):
         cpu_load = check_cpu_load()
         ram_load = self.check_ram_load()
-        self.log(f'Current CPU Load is {cpu_load}%')
-        self.log(f'Current RAM Load is {ram_load}%')
+        self.log(f'CPU {cpu_load}%    |    RAM {ram_load}%')
+
 
 
 if __name__ == '__main__':
