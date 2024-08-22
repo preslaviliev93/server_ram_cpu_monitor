@@ -18,7 +18,7 @@ class SystemMonitor:
         print(message)
 
     def check_cpu_load(self):
-        cpu_load = psutil.cpu_percent(interval=1)
+        cpu_load = psutil.cpu_percent(interval=1, percpu=True)
         self.log(f'Current CPU Load is {cpu_load}%')
         return cpu_load
 
