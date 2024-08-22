@@ -19,12 +19,10 @@ class SystemMonitor:
 
     def check_cpu_load(self):
         cpu_load = psutil.cpu_percent(interval=1, percpu=True)
-        self.log(f'Current CPU Load is {cpu_load}%')
         return cpu_load
 
     def check_ram_load(self):
         ram_load = psutil.virtual_memory().percent
-        self.log(f'Current RAM Load is {ram_load}%')
         return ram_load
 
     def monitor_system(self):
