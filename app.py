@@ -13,7 +13,6 @@ class SystemMonitor:
             format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         )
 
-    @staticmethod
     def log(self, message):
         logging.debug(message)
         print(message)
