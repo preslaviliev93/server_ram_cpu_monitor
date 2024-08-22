@@ -2,6 +2,7 @@ import psutil
 import logging
 import time
 
+
 def check_cpu_load():
     cpu_load = psutil.cpu_percent(interval=1, percpu=True)
     return cpu_load
@@ -30,7 +31,6 @@ class SystemMonitor:
         cpu_load = check_cpu_load()
         ram_load = self.check_ram_load()
         self.log(f'CPU {cpu_load}%    |    RAM {ram_load}%')
-
 
 
 if __name__ == '__main__':
