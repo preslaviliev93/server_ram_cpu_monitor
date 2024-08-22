@@ -1,5 +1,10 @@
 import psutil
 import logging
+import time
+
+def check_cpu_load():
+    cpu_load = psutil.cpu_percent(interval=1, percpu=True)
+    return cpu_load
 
 
 class SystemMonitor:
@@ -15,18 +20,14 @@ class SystemMonitor:
 
     def log(self, message):
         logging.debug(message)
-        print(message)
-
-    def check_cpu_load(self):
-        cpu_load = psutil.cpu_percent(interval=1, percpu=True)
-        return cpu_load
+        # print(message)    # UNCOMMENT THIS LINE TO VIEW LOG MESSAGES IN THE CLI
 
     def check_ram_load(self):
         ram_load = psutil.virtual_memory().percent
         return ram_load
 
     def monitor_system(self):
-        cpu_load = self.check_cpu_load()
+        cpu_load = check_cpu_load()
         ram_load = self.check_ram_load()
         self.log(f'Current CPU Load is {cpu_load}%')
         self.log(f'Current RAM Load is {ram_load}%')
@@ -34,4 +35,6 @@ class SystemMonitor:
 
 if __name__ == '__main__':
     monitor = SystemMonitor()
-    monitor.monitor_system()
+    while True:
+        monitor.monitor_system()
+        time.sleep(10)
